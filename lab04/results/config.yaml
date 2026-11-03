@@ -1,0 +1,18 @@
+pipeline:
+  name: uci_adult_leakage_free
+  random_state: 42
+  processed_dataset_sha256: "b4f34ab25817beb9eaedf069cf5fa1ffea5348183c06d984899409683078c572"
+  split:
+    train_ratio: 0.70
+    test_ratio: 0.30
+    stratified: true
+  artifacts:
+    preprocessor: "results/preprocessor.joblib"
+    processed_dataset: "results/processed_train.csv"
+  metrics:
+    without_features:
+      accuracy: 0.8540
+      f1: 0.6601
+    with_features:
+      accuracy: 0.8578
+      f1: 0.6696
