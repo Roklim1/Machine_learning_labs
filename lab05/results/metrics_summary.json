@@ -1,0 +1,53 @@
+{
+  "gradient_verification": {
+    "expression": "((a*b + c)**2).relu().sum()",
+    "custom_output": 7.682046263765017,
+    "torch_output": 7.682046263765016,
+    "max_abs_diff_vs_pytorch": 0.0,
+    "max_abs_diff_vs_numerical": 4.3162273755115166e-10,
+    "passed_1e_6": true
+  },
+  "moons_benchmark": {
+    "n_samples": 100,
+    "epochs": 80,
+    "runs": 5,
+    "custom_median_ms": 9731.341,
+    "pytorch_median_ms": 65.846,
+    "speedup_pytorch_vs_custom": 147.79,
+    "custom_final_loss": 0.31828,
+    "pytorch_final_loss": 0.31828,
+    "custom_accuracy": 0.87,
+    "pytorch_accuracy": 0.87
+  },
+  "pytorch_internals": {
+    "execution_mode_tested": "torch.jit.trace",
+    "eager_latency_ms": 0.76494,
+    "optimized_latency_ms": 0.57202,
+    "execution_speedup": 1.337,
+    "tensor_metadata": {
+      "base_shape": [
+        1024,
+        1024
+      ],
+      "base_dtype": "torch.float32",
+      "base_is_contiguous": true,
+      "base_stride": [
+        1024,
+        1
+      ],
+      "view_shape": [
+        1024,
+        1024
+      ],
+      "view_dtype": "torch.float32",
+      "view_is_contiguous": false,
+      "view_stride": [
+        1,
+        1024
+      ]
+    },
+    "contiguous_op_ms": 0.18978,
+    "non_contiguous_op_ms": 1.9577,
+    "non_contiguous_slowdown": 10.316
+  }
+}

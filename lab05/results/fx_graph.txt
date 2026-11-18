@@ -1,0 +1,8 @@
+graph():
+    %x : [num_users=1] = placeholder[target=x]
+    %net_0 : [num_users=1] = call_module[target=net.0](args = (%x,), kwargs = {})
+    %net_1 : [num_users=1] = call_module[target=net.1](args = (%net_0,), kwargs = {})
+    %net_2 : [num_users=1] = call_module[target=net.2](args = (%net_1,), kwargs = {})
+    %net_3 : [num_users=1] = call_module[target=net.3](args = (%net_2,), kwargs = {})
+    %net_4 : [num_users=1] = call_module[target=net.4](args = (%net_3,), kwargs = {})
+    return net_4
