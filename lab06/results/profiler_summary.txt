@@ -1,0 +1,27 @@
+=== Stage Breakdown (1 Epoch) ===
+data_loading: 13.5228 s (73.61%)
+forward_pass: 1.6506 s (8.99%)
+backward_pass: 2.5347 s (13.80%)
+optimizer_step: 0.6625 s (3.61%)
+
+=== torch.profiler Top Operators ===
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                     stage_data_loading         0.12%      22.108ms        73.69%       13.512s      31.351ms           431  
+enumerate(DataLoader)#_SingleProcessDataLoaderIter._...        47.46%        8.702s        73.57%       13.490s      31.300ms           431  
+                                    stage_backward_pass         1.08%     197.352ms        13.72%        2.515s       5.849ms           430  
+                                     stage_forward_pass         0.87%     160.131ms         8.96%        1.642s       3.819ms           430  
+autograd::engine::evaluate_function: ConvolutionBack...         0.10%      18.305ms         8.05%        1.477s       1.717ms           860  
+                                   ConvolutionBackward0         0.04%       6.998ms         7.95%        1.458s       1.696ms           860  
+                             aten::convolution_backward         7.83%        1.435s         7.91%        1.451s       1.687ms           860  
+                                               aten::to         1.62%     297.176ms         7.44%        1.363s       3.434us        397046  
+                                         aten::_to_copy         3.59%     658.571ms         6.30%        1.156s       6.594us        175320  
+                                              aten::div         2.55%     467.044ms         4.70%     862.488ms      14.979us         57580  
+                                               aten::eq         1.79%     327.548ms         3.84%     704.938ms      12.817us         55000  
+                                   stage_optimizer_step         0.18%      32.421ms         3.52%     644.673ms       1.499ms           430  
+                                       aten::max_pool2d         0.05%       9.232ms         3.47%     636.830ms     740.500us           860  
+                          aten::max_pool2d_with_indices         3.45%     632.635ms         3.45%     632.635ms     735.622us           860  
+                               Optimizer.step#Adam.step         1.31%     240.922ms         3.34%     612.252ms       1.424ms           430  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 18.336s

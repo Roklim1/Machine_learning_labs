@@ -1,0 +1,42 @@
+seed: 42
+device: "cpu"
+
+data:
+  root: "data"
+  mean: 0.2860
+  std: 0.3530
+  train_size: 55000
+  val_size: 5000
+  batch_size: 128
+  num_workers: 0
+
+model:
+  in_channels: 1
+  conv1_channels: 16
+  conv2_channels: 32
+  num_classes: 10
+
+training:
+  epochs: 5
+  lr: 0.001
+  optimizer: "adam"
+  checkpoint_dir: "results/checkpoints"
+
+mlflow:
+  tracking_uri: "mlruns"
+  experiment_name: "lab06_fashion_mnist_cnn"
+
+benchmarks:
+  num_workers_list: [0, 1, 2, 4]
+  batch_sizes_list: [32, 64, 128, 256, 512]
+  batch_study_epochs: 5
+  schedule_epochs: 10
+  accum_base_batch: 64
+  accum_steps: 4
+  accum_target_batch: 256
+  accum_epochs: 5
+  resume_total_epochs: 6
+  resume_interrupt_epoch: 3
+
+output:
+  results_dir: "results"

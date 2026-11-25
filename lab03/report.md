@@ -32,6 +32,6 @@ Python 3.11.8 was used in a virtual environment with PyTorch, Torchvision, Torch
 ![Page 2](results/calc2.jpg)
 
 ## 4. Three conclusions
-1. The noticeable gap between hand-calculated and thop.profile FLOPs arises because standard profilers like THOP lack built-in hooks for PyTorch native Transformer modules, registering only linear projection heads while manual formulas account for the full self-attention matrix operations.
+1. The noticeable gap between hand-calculated and thop.profile FLOPs arises because standard profilers like THOP lack built-in hooks for PyTorch native Transformer modules, registering only linear projection heads while manual formulas accoaunt for the full self-attention matrix operations.
 2. Balancing performance and resource use, the CNN proves to be the superior choice by delivering peak accuracy (89.74%) using a remarkably small number of parameters (20,490). Even though its latency exceeds that of the MLP due to high compute density and sliding-window memory access, the MLP's heavy parameter burden (235,146) heavily undercuts its cost-effectiveness.
 3. Although the Patch Attention model achieves the lowest profiled FLOPs due to tokenizing the image into only 16 patches, it suffers from the lowest test accuracy (83.42%) and high single-sample latency (2.4497 ms). As explained by access pattern analysis, attention mechanisms suffer from non-contiguous memory access and lack local 2D spatial inductive bias, making them inefficient on small-scale vision tasks.
